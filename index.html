@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Launching in Chrome...</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      background: linear-gradient(to top, #00111a, #00334d);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    .rocket {
+      position: relative;
+      width: 50px;
+      height: 120px;
+      background: #e0e0e0;
+      border-radius: 25px;
+      animation: launch 3s ease-in forwards;
+    }
+
+    /* Rocket nose */
+    .rocket::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 25px solid #ff3333;
+    }
+
+    /* Rocket fins */
+    .fin {
+      position: absolute;
+      bottom: 0;
+      width: 20px;
+      height: 30px;
+      background: #ff3333;
+    }
+    .fin.left { left: -20px; border-radius: 0 0 0 10px; }
+    .fin.right { right: -20px; border-radius: 0 0 10px 0; }
+
+    /* Rocket window */
+    .window {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #1a73e8;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+
+    /* Flame */
+    .flame {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 30px;
+      background: radial-gradient(circle at 50% 20%, #ff0, #f00);
+      border-radius: 50%;
+      animation: flicker 0.2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scaleY(1); opacity: 0.8; }
+      to { transform: translateX(-50%) scaleY(1.3); opacity: 1; }
+    }
+
+    @keyframes launch {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+
+    .message {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">🚀 Launching your site in Chrome...</div>
+  <div class="rocket">
+    <div class="window"></div>
+    <div class="fin left"></div>
+    <div class="fin right"></div>
+    <div class="flame"></div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      // Show animation then redirect to Chrome
+      setTimeout(function () {
+        var intentURI = "intent://hspawar128.github.io/OnlineSeva/#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https%3A%2F%2Fhspawar128.github.io%2FOnlineSeva%2F;end";
+        window.location.href = intentURI;
+      }, 2500);
+    };
+  </script>
+</body>
+</html>
